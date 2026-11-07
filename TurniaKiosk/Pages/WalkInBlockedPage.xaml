@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:TurniaKiosk.Components"
+             x:Class="TurniaKiosk.Pages.WalkInBlockedPage">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <c:Logo Grid.Row="0"/>
+
+        <VerticalStackLayout Grid.Row="1" HorizontalOptions="Center">
+            <Label Text="{Binding Title}"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   FontSize="Header"
+                   FontFamily="{StaticResource FontBold}"
+                   Margin="0,0,0,40"/>
+
+            <Label Text="{Binding Message}"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   FontSize="Large"
+                   Margin="40,0"/>
+
+            <Button Text="{Binding ButtonText}"
+                    FontSize="Large"
+                    FontFamily="{StaticResource FontBold}"
+                    CornerRadius="40"
+                    Padding="60,15"
+                    Margin="0,40,0,0"
+                    HorizontalOptions="Center"
+                    Command="{Binding OkCommand}" />
+
+            <Label Text="{Binding CountdownText}"
+                   HorizontalOptions="Center"
+                   FontSize="Medium"
+                   Margin="0,20,0,0"/>
+        </VerticalStackLayout>
+
+    </Grid>
+</ContentPage>

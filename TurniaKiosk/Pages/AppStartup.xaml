@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:TurniaKiosk"
+            x:Class="TurniaKiosk.Pages.AppStartup"
+             xmlns:r="clr-namespace:TurniaKiosk.Resources.Styles"
+             xmlns:c="clr-namespace:TurniaKiosk.Components"
+             >
+
+    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" MinimumWidthRequest="600">
+        <Grid RowSpacing="10">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <c:AppLogo
+        Grid.Row="0"
+        Margin="0,0,0,20"/>
+
+            <Button
+        Grid.Row="1"
+        Margin="40,0,40,20"
+        Text="Iniciar"
+        Command="{Binding StartPageCommand}"
+        Style="{StaticResource ButtonStyle}"
+        IsVisible="true"/>
+
+            <Image
+        Grid.Row="2"
+        Margin="0,25,0,25"
+        Source="loading_gear.gif"
+        WidthRequest="70"
+        IsAnimationPlaying="True"
+        SemanticProperties.Description="cargando"/>
+
+        </Grid>
+
+    </VerticalStackLayout>
+
+</ContentPage>

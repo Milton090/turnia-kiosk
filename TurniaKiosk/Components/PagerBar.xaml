@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TurniaKiosk.Components.PagerBar">
+
+    <ContentView.Resources>
+        <Style x:Key="PagerButton" TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+            <Setter Property="WidthRequest" Value="240"/>
+            <Setter Property="HeightRequest" Value="80"/>
+            <Setter Property="CornerRadius" Value="30"/>
+            <Setter Property="FontSize" Value="Large"/>
+            <Setter Property="FontFamily" Value="{StaticResource FontBold}"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="BackgroundColor" Value="{DynamicResource DynamicBackgroundColor}"/>
+            <Setter Property="Shadow">
+                <Setter.Value>
+                    <Shadow Brush="Black" Offset="3,3" Radius="2" Opacity="0.3"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </ContentView.Resources>
+
+    <Grid
+        ColumnDefinitions="Auto,Auto,Auto"
+        ColumnSpacing="40"
+        HorizontalOptions="Center"
+        Margin="0,30,0,0"
+        IsVisible="{Binding ShowPager}">
+
+        <Button
+            Grid.Column="0"
+            Text="{Binding PreviousText}"
+            Command="{Binding PreviousCommand}"
+            Style="{StaticResource PagerButton}">
+            <Button.Triggers>
+                <Trigger TargetType="Button" Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.35"/>
+                </Trigger>
+            </Button.Triggers>
+        </Button>
+
+        <Label
+            Grid.Column="1"
+            Text="{Binding PageText}"
+            FontSize="Large"
+            FontFamily="{StaticResource FontMedium}"
+            VerticalOptions="Center"/>
+
+        <Button
+            Grid.Column="2"
+            Text="{Binding NextText}"
+            Command="{Binding NextCommand}"
+            Style="{StaticResource PagerButton}">
+            <Button.Triggers>
+                <Trigger TargetType="Button" Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.35"/>
+                </Trigger>
+            </Button.Triggers>
+        </Button>
+
+    </Grid>
+</ContentView>

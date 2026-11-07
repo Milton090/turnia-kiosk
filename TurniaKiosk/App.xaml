@@ -1,0 +1,17 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TurniaKiosk"
+             xmlns:r="clr-namespace:TurniaKiosk.Resources.Styles"
+             x:Class="TurniaKiosk.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="DynamicBackgroundColor">#0F766E</Color>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+                <r:ButtonStyles/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

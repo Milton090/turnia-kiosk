@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TurniaKiosk.Pages.ServiceSelection"
+             xmlns:r="clr-namespace:TurniaKiosk.Resources.Styles"
+             xmlns:c="clr-namespace:TurniaKiosk.Components"
+             xmlns:local="clr-namespace:TurniaKiosk.ViewModels.Pages">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="1050" />
+            <RowDefinition Height="200" />
+        </Grid.RowDefinitions>
+
+        <c:Logo Grid.Row="0" />
+
+        <Grid Grid.Row="1" RowDefinitions="Auto,Auto,Auto" VerticalOptions="Center">
+
+            <Label Grid.Row="0" Text="Seleccione su servicio" HorizontalOptions="Center" FontSize="Header" Margin="0,0,0,60" />
+
+            <CollectionView
+                Grid.Row="1"
+                x:Name="NamesCollectionView"
+                HeightRequest="500"
+                ItemsSource="{Binding Pager.PageItems}">
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="15" Padding="40">
+                        <Image Source="notice_icon.png" HeightRequest="80" WidthRequest="80" HorizontalOptions="Center"/>
+                        <Label Text="{Binding EmptyStateMessage}" FontSize="Large" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        Orientation="Vertical"
+                        Span="2"
+                        VerticalItemSpacing="20"
+                        HorizontalItemSpacing="30"
+                        />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate >
+
+                        <Button
+                                TextColor="white"
+                                FontFamily="{StaticResource FontBold}"
+                                CornerRadius="35"
+                                Text="{Binding Name}"
+                                Style="{StaticResource ButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ServiceSelectionViewModel}}, Path=SelectService}"
+                                CommandParameter="{Binding Id}"
+                                FontSize="Large"
+                                HorizontalOptions="Fill"
+                                FontAutoScalingEnabled="True"
+                                LineBreakMode="WordWrap"
+                                HeightRequest="105">
+                            <Button.Shadow>
+                                <Shadow
+                                        Brush="Black"
+                                        Offset="3,3"
+                                        Radius="3"
+                                        Opacity="0.3" />
+                            </Button.Shadow>
+                        </Button>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <c:PagerBar Grid.Row="2" BindingContext="{Binding Pager}" />
+
+        </Grid>
+
+    </Grid>
+</ContentPage>
